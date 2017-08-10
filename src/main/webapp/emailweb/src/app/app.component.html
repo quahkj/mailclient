@@ -1,0 +1,59 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Welcome to EmailClient</h2>
+<p>Instruction: To, subject and text field are mandatory. You can specify multiple emails by putting comma as a separator.</p>
+<div style="padding: 20px">
+  <div class="row field-padding">
+    <div class="col-md-1">To*</div>
+    <div class="col-md-4">
+      <input  [(ngModel)]="emailParam.to" id="to-input" size="50" />&nbsp;<span class="err">{{toErrorMsg}}</span>
+    </div>
+  </div>
+  <div class="row field-padding">
+    <div class="col-md-1">CC</div>
+    <div class="col-md-4">
+      <input [(ngModel)]="emailParam.cc" id="cc-input" size="50" />
+    </div>
+  </div>
+  <div class="row field-padding">
+    <div class="col-md-1">BCC</div>
+    <div class="col-md-4">
+      <input [(ngModel)]="emailParam.bcc" id="bcc-input" size="50" />
+    </div>
+  </div>
+  <div class="row field-padding">
+    <div class="col-md-1">Subject*</div>
+    <div class="col-md-4">
+      <input [(ngModel)]="emailParam.subject" id="subject-input" size="50"/>&nbsp;<span class="err">{{subjectErrorMsg}}</span>
+    </div>
+  </div>
+  <div class="row field-padding">
+    <div class="col-md-1">Text*</div>
+    <div class="col-md-5">
+      <textarea [(ngModel)]="emailParam.text" rows="4" cols="100"></textarea>&nbsp;<span class="err">{{textErrorMsg}}</span>
+    </div>
+  </div>
+  <div class="row field-padding">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <input type="button" value="Submit"
+             (click)="sendEmail()">&nbsp;
+      <input type="button" value="Reset" (click)="resetForm()">
+    </div>
+  </div>
+  <div class="row field-padding" *ngIf="emailResult && sentResult">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <alert type="success">
+        Email sent successfully.
+      </alert>
+    </div>
+  </div>
+  <div class="row field-padding" *ngIf="emailResult && !sentResult">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <alert type="danger">
+        Email sent failed.
+      </alert>
+    </div>
+  </div>
+</div>
